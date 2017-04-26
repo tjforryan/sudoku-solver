@@ -1,0 +1,36 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "prefer-arrow-callback": 0,
+    "no-underscore-dangle": 0,
+    "newline-per-chained-call": 0,
+    "global-require": 0,
+    "func-names": 0,
+    "max-len": [1, {"code": 200, "ignoreUrls": true}],
+    "strict": 0,
+    "import/no-extraneous-dependencies": 0,
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never"
+    }],
+    "no-plusplus": 0,
+    "import/no-dynamic-require": 0
+  },
+  "globals": {
+    "xdescribe": true,
+    "describe": true,
+    "xit": true,
+    "it": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true,
+    "browser": true,
+    "sinon": true,
+    "expect": true,
+    "clientConfig": true
+  }
+}
