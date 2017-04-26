@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class SudokuContainer extends React.Component {
-  render() {
-    return (
-      <div>
-        The number is {this.props.number}
-      </div>
-    );
-  }
+function BasicComponent(props) {
+  return (
+    <div>
+      I have been passed the number: {props.number}
+    </div>
+  );
 }
 
-SudokuContainer.propTypes = {
+BasicComponent.propTypes = {
   number: PropTypes.number,
 };
 
-module.exports = SudokuContainer;
+module.exports = BasicComponent;

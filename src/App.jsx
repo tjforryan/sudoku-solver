@@ -4,10 +4,14 @@ import ReactDOM from 'react-dom';
 import BasicComponent from './components/BasicComponent';
 
 class App extends React.Component {
+  componentWillReceiveProps() {
+    console.log('I would receive props now... if I had any...');
+  }
+
   render() {
     return (
       <div>
-        <h1>Hello {this.props.name}!</h1>
+        <h1>Hello World!</h1>
         <BasicComponent number={0} />
       </div>
     );
@@ -18,4 +22,4 @@ App.propTypes = {
   name: PropTypes.string,
 };
 
-ReactDOM.render(<App name="Tom" />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
