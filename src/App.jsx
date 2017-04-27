@@ -1,25 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import BasicComponent from './components/BasicComponent';
+import { Router, Route, browserHistory } from 'react-router';
+import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import promiseMiddleware from 'redux-promise';
+import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 
-class App extends React.Component {
-  componentWillReceiveProps() {
-    console.log('I would receive props now... if I had any...');
-  }
+import BasicContainer from './containers/BasicContainer';
+import rootReducer from './reducers/root';
 
-  render() {
-    return (
-      <div>
-        <h1>Hello World!</h1>
-        <BasicComponent number={0} />
-      </div>
-    );
-  }
-}
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    promiseMiddleware,
+    routerMiddleware(browserHistory),
+    logger
+  )
+);
 
-App.propTypes = {
-  name: PropTypes.string,
-};
+const history = syncHistoryWithStore(browserHistory, store);
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="*" component={BasicContainer} />
+    </Router>
+  </Provider>
+  , document.getElementById('app'));
