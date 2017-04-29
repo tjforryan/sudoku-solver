@@ -1,5 +1,5 @@
 {
-  "name": "seed-app",
+  "name": "sudoku-solver",
   "version": "0.0.1",
   "description": "A seed app that can form the foundation for other apps",
   "author": "Tom",
